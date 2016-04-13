@@ -16,5 +16,10 @@ namespace CodeCoolCommander
         {
             InitializeComponent();
         }
+
+        private void CCCForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

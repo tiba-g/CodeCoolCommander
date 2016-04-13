@@ -53,8 +53,12 @@
     <Compile Include="CCCForm.Designer.cs">
       <DependentUpon>CCCForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="FileProperty.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="CCCForm.resx">
+      <DependentUpon>CCCForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

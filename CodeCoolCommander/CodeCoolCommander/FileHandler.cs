@@ -68,5 +68,10 @@ namespace CodeCoolCommander.Controller
         {
             return 0;
         }
+
+        public static bool SetFileAttributes(string filePath, FileProperty fileProperty)
+        {
+            return false;
+        }
     }
 }
