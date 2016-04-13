@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace CodeCoolCommander
 {
-    public partial class Form1 : Form
+    public partial class CCCForm : Form
     {
-        public Form1()
+        public CCCForm()
         {
             InitializeComponent();
         }

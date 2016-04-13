@@ -1,6 +1,6 @@
 ﻿namespace CodeCoolCommander
 {
-    partial class Form1
+    partial class CCCForm
     {
         /// <summary>
         /// Required designer variable.
