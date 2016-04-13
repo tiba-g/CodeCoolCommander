@@ -12,7 +12,17 @@ namespace CodeCoolCommander.Controller
 
         private static bool DeleteFile(string filePath)
         {
-            return false;
+            bool successfull;
+            try
+            {
+                File.Delete(filePath);
+                successfull = true;
+            }
+            catch (Exception)
+            {
+                successfull = false;
+            }
+            return successfull;
         }
 
         public static DriveInfo[] GetAllDrives()
@@ -79,9 +89,19 @@ namespace CodeCoolCommander.Controller
             return successfull;
         }
 
-        public static bool MoveFile(string filePath)
+        public static bool MoveFile(string sourceFilePath, string destinationFilePath)
         {
-            return false;
+            bool successfull;
+            try
+            {
+                File.Move(sourceFilePath, destinationFilePath);
+                successfull = true;
+            }
+            catch (Exception)
+            {
+                successfull = false;
+            }
+            return successfull;
         }
  
         public static double GetOccupiedSpace(string filePath)
