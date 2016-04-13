@@ -64,9 +64,19 @@ namespace CodeCoolCommander.Controller
             return null;
         }
 
-        public static bool CopyFile(string sourceFilePath, string destinationFilePath)
+        public static bool CopyFile(string sourceFilePath, string destinationFilePath, bool overwrite)
         {
-            return false;
+            bool successfull;
+            try
+            {
+                File.Copy(sourceFilePath, destinationFilePath, overwrite);
+                successfull = true;
+            }
+            catch (Exception)
+            {
+                successfull = false;
+            }
+            return successfull;
         }
 
         public static bool MoveFile(string filePath)
