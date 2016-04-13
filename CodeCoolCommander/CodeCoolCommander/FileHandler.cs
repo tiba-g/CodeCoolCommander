@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,9 +15,18 @@ namespace CodeCoolCommander.Controller
             return false;
         }
 
-        public static bool GetAllDrives()
+        public static DriveInfo[] GetAllDrives()
         {
-            return false;
+            DriveInfo[] allDrives;
+            try
+            {
+                allDrives = DriveInfo.GetDrives();
+            }
+            catch (Exception)
+            {
+                allDrives = null;
+            }
+            return allDrives;
         }
 
         public static bool GetAllFilesAndDictionary()
