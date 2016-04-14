@@ -28,173 +28,174 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.listView1 = new System.Windows.Forms.ListView();
-            this.listView2 = new System.Windows.Forms.ListView();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
+            this.listViewFilesLeft = new System.Windows.Forms.ListView();
+            this.listViewFilesRight = new System.Windows.Forms.ListView();
+            this.comboBoxDrivesLeft = new System.Windows.Forms.ComboBox();
+            this.comboBoxDriveRight = new System.Windows.Forms.ComboBox();
+            this.textBoxSearch = new System.Windows.Forms.TextBox();
+            this.labelSearch = new System.Windows.Forms.Label();
+            this.buttonSearch = new System.Windows.Forms.Button();
+            this.buttonCopy = new System.Windows.Forms.Button();
+            this.buttonMove = new System.Windows.Forms.Button();
+            this.buttonZip = new System.Windows.Forms.Button();
+            this.buttonUnzip = new System.Windows.Forms.Button();
+            this.buttonEncrypt = new System.Windows.Forms.Button();
+            this.buttonDencrypt = new System.Windows.Forms.Button();
+            this.buttonAttribute = new System.Windows.Forms.Button();
+            this.buttonOccupiedSpace = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // listView1
+            // listViewFilesLeft
             // 
-            this.listView1.Location = new System.Drawing.Point(12, 44);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(426, 368);
-            this.listView1.TabIndex = 0;
-            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listViewFilesLeft.Location = new System.Drawing.Point(15, 44);
+            this.listViewFilesLeft.Name = "listViewFilesLeft";
+            this.listViewFilesLeft.Size = new System.Drawing.Size(453, 368);
+            this.listViewFilesLeft.TabIndex = 0;
+            this.listViewFilesLeft.UseCompatibleStateImageBehavior = false;
             // 
-            // listView2
+            // listViewFilesRight
             // 
-            this.listView2.Location = new System.Drawing.Point(444, 44);
-            this.listView2.Name = "listView2";
-            this.listView2.Size = new System.Drawing.Size(426, 368);
-            this.listView2.TabIndex = 1;
-            this.listView2.UseCompatibleStateImageBehavior = false;
+            this.listViewFilesRight.Location = new System.Drawing.Point(474, 44);
+            this.listViewFilesRight.Name = "listViewFilesRight";
+            this.listViewFilesRight.Size = new System.Drawing.Size(453, 368);
+            this.listViewFilesRight.TabIndex = 1;
+            this.listViewFilesRight.UseCompatibleStateImageBehavior = false;
             // 
-            // comboBox1
+            // comboBoxDrivesLeft
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(12, 17);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(426, 21);
-            this.comboBox1.TabIndex = 2;
+            this.comboBoxDrivesLeft.FormattingEnabled = true;
+            this.comboBoxDrivesLeft.Location = new System.Drawing.Point(15, 17);
+            this.comboBoxDrivesLeft.Name = "comboBoxDrivesLeft";
+            this.comboBoxDrivesLeft.Size = new System.Drawing.Size(453, 21);
+            this.comboBoxDrivesLeft.TabIndex = 2;
             // 
-            // comboBox2
+            // comboBoxDriveRight
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(444, 17);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(426, 21);
-            this.comboBox2.TabIndex = 3;
+            this.comboBoxDriveRight.FormattingEnabled = true;
+            this.comboBoxDriveRight.Location = new System.Drawing.Point(474, 17);
+            this.comboBoxDriveRight.Name = "comboBoxDriveRight";
+            this.comboBoxDriveRight.Size = new System.Drawing.Size(453, 21);
+            this.comboBoxDriveRight.TabIndex = 3;
             // 
-            // textBox1
+            // textBoxSearch
             // 
-            this.textBox1.Location = new System.Drawing.Point(229, 418);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(529, 20);
-            this.textBox1.TabIndex = 4;
+            this.textBoxSearch.Location = new System.Drawing.Point(229, 418);
+            this.textBoxSearch.Name = "textBoxSearch";
+            this.textBoxSearch.Size = new System.Drawing.Size(581, 20);
+            this.textBoxSearch.TabIndex = 4;
             // 
-            // label1
+            // labelSearch
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 421);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "label1";
+            this.labelSearch.AutoSize = true;
+            this.labelSearch.Location = new System.Drawing.Point(12, 421);
+            this.labelSearch.Name = "labelSearch";
+            this.labelSearch.Size = new System.Drawing.Size(196, 13);
+            this.labelSearch.TabIndex = 5;
+            this.labelSearch.Text = "According by regular expression pattern:";
             // 
-            // button1
+            // buttonSearch
             // 
-            this.button1.Location = new System.Drawing.Point(764, 416);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(101, 23);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.buttonSearch.Location = new System.Drawing.Point(816, 415);
+            this.buttonSearch.Name = "buttonSearch";
+            this.buttonSearch.Size = new System.Drawing.Size(111, 23);
+            this.buttonSearch.TabIndex = 6;
+            this.buttonSearch.Text = "Search F1";
+            this.buttonSearch.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // buttonCopy
             // 
-            this.button2.Location = new System.Drawing.Point(15, 444);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(101, 23);
-            this.button2.TabIndex = 7;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
+            this.buttonCopy.Location = new System.Drawing.Point(15, 444);
+            this.buttonCopy.Name = "buttonCopy";
+            this.buttonCopy.Size = new System.Drawing.Size(93, 23);
+            this.buttonCopy.TabIndex = 7;
+            this.buttonCopy.Text = "Copy F2";
+            this.buttonCopy.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // buttonMove
             // 
-            this.button3.Location = new System.Drawing.Point(122, 444);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(101, 23);
-            this.button3.TabIndex = 8;
-            this.button3.Text = "button3";
-            this.button3.UseVisualStyleBackColor = true;
+            this.buttonMove.Location = new System.Drawing.Point(114, 444);
+            this.buttonMove.Name = "buttonMove";
+            this.buttonMove.Size = new System.Drawing.Size(111, 23);
+            this.buttonMove.TabIndex = 8;
+            this.buttonMove.Text = "Move F3";
+            this.buttonMove.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // buttonZip
             // 
-            this.button4.Location = new System.Drawing.Point(229, 444);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(101, 23);
-            this.button4.TabIndex = 9;
-            this.button4.Text = "button4";
-            this.button4.UseVisualStyleBackColor = true;
+            this.buttonZip.Location = new System.Drawing.Point(231, 444);
+            this.buttonZip.Name = "buttonZip";
+            this.buttonZip.Size = new System.Drawing.Size(111, 23);
+            this.buttonZip.TabIndex = 9;
+            this.buttonZip.Text = "Zip F3";
+            this.buttonZip.UseVisualStyleBackColor = true;
             // 
-            // button5
+            // buttonUnzip
             // 
-            this.button5.Location = new System.Drawing.Point(336, 444);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(101, 23);
-            this.button5.TabIndex = 10;
-            this.button5.Text = "button5";
-            this.button5.UseVisualStyleBackColor = true;
+            this.buttonUnzip.Location = new System.Drawing.Point(348, 444);
+            this.buttonUnzip.Name = "buttonUnzip";
+            this.buttonUnzip.Size = new System.Drawing.Size(111, 23);
+            this.buttonUnzip.TabIndex = 10;
+            this.buttonUnzip.Text = "Un Zip F4";
+            this.buttonUnzip.UseVisualStyleBackColor = true;
             // 
-            // button6
+            // buttonEncrypt
             // 
-            this.button6.Location = new System.Drawing.Point(443, 444);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(101, 23);
-            this.button6.TabIndex = 11;
-            this.button6.Text = "button6";
-            this.button6.UseVisualStyleBackColor = true;
+            this.buttonEncrypt.Location = new System.Drawing.Point(465, 444);
+            this.buttonEncrypt.Name = "buttonEncrypt";
+            this.buttonEncrypt.Size = new System.Drawing.Size(111, 23);
+            this.buttonEncrypt.TabIndex = 11;
+            this.buttonEncrypt.Text = "Encrypt F5";
+            this.buttonEncrypt.UseVisualStyleBackColor = true;
             // 
-            // button7
+            // buttonDencrypt
             // 
-            this.button7.Location = new System.Drawing.Point(550, 444);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(101, 23);
-            this.button7.TabIndex = 12;
-            this.button7.Text = "button7";
-            this.button7.UseVisualStyleBackColor = true;
+            this.buttonDencrypt.Location = new System.Drawing.Point(582, 444);
+            this.buttonDencrypt.Name = "buttonDencrypt";
+            this.buttonDencrypt.Size = new System.Drawing.Size(111, 23);
+            this.buttonDencrypt.TabIndex = 12;
+            this.buttonDencrypt.Text = "Dencrypt F6";
+            this.buttonDencrypt.UseVisualStyleBackColor = true;
             // 
-            // button8
+            // buttonAttribute
             // 
-            this.button8.Location = new System.Drawing.Point(764, 444);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(101, 23);
-            this.button8.TabIndex = 13;
-            this.button8.Text = "button8";
-            this.button8.UseVisualStyleBackColor = true;
+            this.buttonAttribute.Location = new System.Drawing.Point(699, 444);
+            this.buttonAttribute.Name = "buttonAttribute";
+            this.buttonAttribute.Size = new System.Drawing.Size(111, 23);
+            this.buttonAttribute.TabIndex = 13;
+            this.buttonAttribute.Text = "File Attributes F7";
+            this.buttonAttribute.UseVisualStyleBackColor = true;
             // 
-            // button9
+            // buttonOccupiedSpace
             // 
-            this.button9.Location = new System.Drawing.Point(657, 444);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(101, 23);
-            this.button9.TabIndex = 14;
-            this.button9.Text = "button9";
-            this.button9.UseVisualStyleBackColor = true;
+            this.buttonOccupiedSpace.Location = new System.Drawing.Point(816, 444);
+            this.buttonOccupiedSpace.Name = "buttonOccupiedSpace";
+            this.buttonOccupiedSpace.Size = new System.Drawing.Size(111, 23);
+            this.buttonOccupiedSpace.TabIndex = 14;
+            this.buttonOccupiedSpace.Text = "Occupied Space F8";
+            this.buttonOccupiedSpace.UseVisualStyleBackColor = true;
             // 
             // CCCForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(880, 472);
-            this.Controls.Add(this.button9);
-            this.Controls.Add(this.button8);
-            this.Controls.Add(this.button7);
-            this.Controls.Add(this.button6);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.listView2);
-            this.Controls.Add(this.listView1);
+            this.ClientSize = new System.Drawing.Size(943, 472);
+            this.Controls.Add(this.buttonOccupiedSpace);
+            this.Controls.Add(this.buttonAttribute);
+            this.Controls.Add(this.buttonDencrypt);
+            this.Controls.Add(this.buttonEncrypt);
+            this.Controls.Add(this.buttonUnzip);
+            this.Controls.Add(this.buttonZip);
+            this.Controls.Add(this.buttonMove);
+            this.Controls.Add(this.buttonCopy);
+            this.Controls.Add(this.buttonSearch);
+            this.Controls.Add(this.labelSearch);
+            this.Controls.Add(this.textBoxSearch);
+            this.Controls.Add(this.comboBoxDriveRight);
+            this.Controls.Add(this.comboBoxDrivesLeft);
+            this.Controls.Add(this.listViewFilesRight);
+            this.Controls.Add(this.listViewFilesLeft);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "CCCForm";
             this.Text = "CodeCool Commander";
             this.Load += new System.EventHandler(this.CCCForm_Load);
@@ -205,21 +206,21 @@
 
         #endregion
 
-        private System.Windows.Forms.ListView listView1;
-        private System.Windows.Forms.ListView listView2;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.ListView listViewFilesLeft;
+        private System.Windows.Forms.ListView listViewFilesRight;
+        private System.Windows.Forms.ComboBox comboBoxDrivesLeft;
+        private System.Windows.Forms.ComboBox comboBoxDriveRight;
+        private System.Windows.Forms.TextBox textBoxSearch;
+        private System.Windows.Forms.Label labelSearch;
+        private System.Windows.Forms.Button buttonSearch;
+        private System.Windows.Forms.Button buttonCopy;
+        private System.Windows.Forms.Button buttonMove;
+        private System.Windows.Forms.Button buttonZip;
+        private System.Windows.Forms.Button buttonUnzip;
+        private System.Windows.Forms.Button buttonEncrypt;
+        private System.Windows.Forms.Button buttonDencrypt;
+        private System.Windows.Forms.Button buttonAttribute;
+        private System.Windows.Forms.Button buttonOccupiedSpace;
     }
 }
 
