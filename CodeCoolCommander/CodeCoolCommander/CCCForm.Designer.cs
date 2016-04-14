@@ -1,4 +1,6 @@
-﻿namespace CodeCoolCommander
+﻿using System;
+
+namespace CodeCoolCommander.View
 {
     partial class CCCForm
     {
@@ -31,7 +33,7 @@
             this.listViewFilesLeft = new System.Windows.Forms.ListView();
             this.listViewFilesRight = new System.Windows.Forms.ListView();
             this.comboBoxDrivesLeft = new System.Windows.Forms.ComboBox();
-            this.comboBoxDriveRight = new System.Windows.Forms.ComboBox();
+            this.comboBoxDrivesRight = new System.Windows.Forms.ComboBox();
             this.textBoxSearch = new System.Windows.Forms.TextBox();
             this.labelSearch = new System.Windows.Forms.Label();
             this.buttonSearch = new System.Windows.Forms.Button();
@@ -69,13 +71,13 @@
             this.comboBoxDrivesLeft.Size = new System.Drawing.Size(453, 21);
             this.comboBoxDrivesLeft.TabIndex = 2;
             // 
-            // comboBoxDriveRight
+            // comboBoxDrivesRight
             // 
-            this.comboBoxDriveRight.FormattingEnabled = true;
-            this.comboBoxDriveRight.Location = new System.Drawing.Point(474, 17);
-            this.comboBoxDriveRight.Name = "comboBoxDriveRight";
-            this.comboBoxDriveRight.Size = new System.Drawing.Size(453, 21);
-            this.comboBoxDriveRight.TabIndex = 3;
+            this.comboBoxDrivesRight.FormattingEnabled = true;
+            this.comboBoxDrivesRight.Location = new System.Drawing.Point(474, 17);
+            this.comboBoxDrivesRight.Name = "comboBoxDrivesRight";
+            this.comboBoxDrivesRight.Size = new System.Drawing.Size(453, 21);
+            this.comboBoxDrivesRight.TabIndex = 3;
             // 
             // textBoxSearch
             // 
@@ -191,7 +193,7 @@
             this.Controls.Add(this.buttonSearch);
             this.Controls.Add(this.labelSearch);
             this.Controls.Add(this.textBoxSearch);
-            this.Controls.Add(this.comboBoxDriveRight);
+            this.Controls.Add(this.comboBoxDrivesRight);
             this.Controls.Add(this.comboBoxDrivesLeft);
             this.Controls.Add(this.listViewFilesRight);
             this.Controls.Add(this.listViewFilesLeft);
@@ -209,7 +211,7 @@
         private System.Windows.Forms.ListView listViewFilesLeft;
         private System.Windows.Forms.ListView listViewFilesRight;
         private System.Windows.Forms.ComboBox comboBoxDrivesLeft;
-        private System.Windows.Forms.ComboBox comboBoxDriveRight;
+        private System.Windows.Forms.ComboBox comboBoxDrivesRight;
         private System.Windows.Forms.TextBox textBoxSearch;
         private System.Windows.Forms.Label labelSearch;
         private System.Windows.Forms.Button buttonSearch;
