@@ -9,7 +9,7 @@ namespace CodeCoolCommander.Controller
 {
     public class FileHandle
     {
-
+        
         private static bool DeleteFile(string filePath)
         {
             bool successfull;
