@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -12,7 +13,7 @@ namespace CodeCoolCommander.Controller
     public class FileHandler
     {
 
-         private static long size = 0;
+        private static long size = 0;
 
         private static bool DeleteFile(string filePath)
         {
@@ -50,14 +51,16 @@ namespace CodeCoolCommander.Controller
             FileInfo[] files;
             try
             {
-                 dirInfo = new DirectoryInfo(dirPath);
+                dirInfo = new DirectoryInfo(dirPath);
                 fileInfo = new FileInfo(dirPath);
                 files = dirInfo.GetFiles();
             }
-            catch(Exception)
+            catch (Exception)
 
-            { files = null; }
-            
+            {
+                files = null;
+            }
+
             return files;
         }
 
@@ -65,26 +68,29 @@ namespace CodeCoolCommander.Controller
         {
             DirectoryInfo dirinfo;
             DirectoryInfo[] dirs;
-            try {
+            try
+            {
                 dirinfo = new DirectoryInfo(dirPath);
                 dirs = dirinfo.GetDirectories();
             }
-            catch(Exception)
-            { dirs = null; }
+            catch (Exception)
+            {
+                dirs = null;
+            }
 
             return dirs;
         }
 
-        public static bool CompressFiles(List<string> filePath)
+        public static bool CompressFiles(List<string> filePathes)
         {
             try
             {
-                Stream zippedFiles = File.Create(@"c:\Test\test.zip");
-                Stream zipStream = new GZipStream(zippedFiles, CompressionMode.Compress);
+                Stream filesToZip = File.Create(@"c:\Test\test.zip");
+                Stream zipStream = new GZipStream(filesToZip, CompressionMode.Compress);
 
-                for (int fil = 0; fil < filePath.Count; fil++)
+                for (int fil = 0; fil < filePathes.Count; fil++)
                 {
-                    Stream input = File.OpenRead(filePath[fil]);
+                    Stream input = File.OpenRead(filePathes[fil]);
                     byte[] buffer = new byte[4096];
                     int sRead;
 
@@ -95,25 +101,47 @@ namespace CodeCoolCommander.Controller
                     input.Close();
                 }
                 zipStream.Close();
-                zippedFiles.Close();
+                filesToZip.Close();
 
                 return true;
             }
             catch (Exception)
             {
-
-                MessageBox.Show("Failed to compress the file(s)!");
-
                 return false;
             }
         }
 
-        public static bool DeCompressFiles(List<string> filePath)
+        public static bool DeCompressFiles(List<string> filePathes)
         {
-            return false;
-        }
+            try
+            {
+                Stream filesToUnzip = File.Create(@"c:\Test\");
+                Stream zipStream = new GZipStream(filesToUnzip, CompressionMode.Decompress);
 
-        public static bool EncryptFile(string filePath)
+                for (int fil = 0; fil < filePathes.Count; fil++)
+                {
+                    Stream input = File.OpenRead(filePathes[fil]);
+                    byte[] buffer = new byte[4096];
+                    int sRead;
+
+                    while ((sRead = input.Read(buffer, 0, buffer.Length)) > 0)
+                    {
+                        zipStream.Write(buffer, 0, sRead);
+                    }
+                    input.Close();
+                }
+                zipStream.Close();
+                filesToUnzip.Close();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+    
+
+    public static bool EncryptFile(string filePath)
         {
             return false;
         }
