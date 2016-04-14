@@ -5,6 +5,7 @@ using System.IO.Compression;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace CodeCoolCommander.Controller
 {
@@ -75,25 +76,35 @@ namespace CodeCoolCommander.Controller
 
         public static bool CompressFiles(List<string> filePath)
         {
-            Stream zippedFiles = File.Create(@"c:\Test\test.zip");
-            Stream zipStream = new GZipStream(zippedFiles, CompressionMode.Compress);
-
-            for (int fil = 0; fil < filePath.Count; fil++)
+            try
             {
-                Stream input = File.OpenRead(filePath[fil]);
-                byte[] buffer = new byte[4096];
-                int sRead;
+                Stream zippedFiles = File.Create(@"c:\Test\test.zip");
+                Stream zipStream = new GZipStream(zippedFiles, CompressionMode.Compress);
 
-                while ((sRead = input.Read(buffer, 0, buffer.Length)) > 0)
+                for (int fil = 0; fil < filePath.Count; fil++)
                 {
-                    zipStream.Write(buffer, 0, sRead);
-                }
-                input.Close();
-            }
-            zipStream.Close();
-            zippedFiles.Close();
+                    Stream input = File.OpenRead(filePath[fil]);
+                    byte[] buffer = new byte[4096];
+                    int sRead;
 
-            return false;
+                    while ((sRead = input.Read(buffer, 0, buffer.Length)) > 0)
+                    {
+                        zipStream.Write(buffer, 0, sRead);
+                    }
+                    input.Close();
+                }
+                zipStream.Close();
+                zippedFiles.Close();
+
+                return true;
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Failed to compress the file(s)!");
+
+                return false;
+            }
         }
 
         public static bool DeCompressFiles(List<string> filePath)
