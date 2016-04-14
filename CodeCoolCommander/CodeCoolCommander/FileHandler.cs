@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,20 +9,46 @@ namespace CodeCoolCommander.Controller
 {
     public class FileHandle
     {
-        
+
         private static bool DeleteFile(string filePath)
         {
-            return false;
+            bool successfull;
+            try
+            {
+                File.Delete(filePath);
+                successfull = true;
+            }
+            catch (Exception)
+            {
+                successfull = false;
+            }
+            return successfull;
         }
 
-        public static bool GetAllDrives()
+        public static DriveInfo[] GetAllDrives()
         {
-            return false;
+            DriveInfo[] allDrives;
+            try
+            {
+                allDrives = DriveInfo.GetDrives();
+            }
+            catch (Exception)
+            {
+                allDrives = null;
+            }
+            return allDrives;
         }
 
-        public static bool GetAllFilesAndDictionary()
+        public static string GetAllFilesAndDirectories(string dirPath)
         {
-            return false;
+            DirectoryInfo dirInfo = new DirectoryInfo(dirPath);
+            DirectoryInfo[] dirs = dirInfo.GetDirectories();
+            FileInfo fileInfo = new FileInfo(dirPath);
+            FileInfo[] files = dirInfo.GetFiles();
+
+            return null;
+
+
         }
 
         public static bool CompressFiles(List<string> filePath)
@@ -54,24 +81,39 @@ namespace CodeCoolCommander.Controller
             return null;
         }
 
-        public static bool CopyFile(string sourceFilePath, string destinationFilePath)
+        public static bool CopyFile(string sourceFilePath, string destinationFilePath, bool overwrite)
         {
-            return false;
+            bool successfull;
+            try
+            {
+                File.Copy(sourceFilePath, destinationFilePath, overwrite);
+                successfull = true;
+            }
+            catch (Exception)
+            {
+                successfull = false;
+            }
+            return successfull;
         }
 
-        public static bool MoveFile(string filePath)
+        public static bool MoveFile(string sourceFilePath, string destinationFilePath)
         {
-            return false;
+            bool successfull;
+            try
+            {
+                File.Move(sourceFilePath, destinationFilePath);
+                successfull = true;
+            }
+            catch (Exception)
+            {
+                successfull = false;
+            }
+            return successfull;
         }
- 
+
         public static double GetOccupiedSpace(string filePath)
         {
             return 0;
-        }
-
-        public static bool SetFileAttributes(string filePath, FileProperty fileProperty)
-        {
-            return false;
         }
     }
 }
