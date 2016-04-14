@@ -39,16 +39,21 @@ namespace CodeCoolCommander.Controller
             return allDrives;
         }
 
-        public static string GetAllFilesAndDirectories(string dirPath)
+        public static FileInfo[] GetAllFiles(string dirPath)
         {
             DirectoryInfo dirInfo = new DirectoryInfo(dirPath);
-            DirectoryInfo[] dirs = dirInfo.GetDirectories();
             FileInfo fileInfo = new FileInfo(dirPath);
             FileInfo[] files = dirInfo.GetFiles();
 
-            return null;
+            return files;
+        }
 
+        public static DirectoryInfo[] GetAllDirectories(string dirPath)
+        {
+            DirectoryInfo dirinfo = new DirectoryInfo(dirPath);
+            DirectoryInfo[] dirs = dirinfo.GetDirectories();
 
+            return dirs;
         }
 
         public static bool CompressFiles(List<string> filePath)
