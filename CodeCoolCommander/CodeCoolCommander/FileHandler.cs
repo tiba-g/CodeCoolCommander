@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.IO.Compression;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -74,6 +75,24 @@ namespace CodeCoolCommander.Controller
 
         public static bool CompressFiles(List<string> filePath)
         {
+            Stream zippedFiles = File.Create(@"c:\Test\test.zip");
+            Stream zipStream = new GZipStream(zippedFiles, CompressionMode.Compress);
+
+            for (int fil = 0; fil < filePath.Count; fil++)
+            {
+                Stream input = File.OpenRead(filePath[fil]);
+                byte[] buffer = new byte[4096];
+                int sRead;
+
+                while ((sRead = input.Read(buffer, 0, buffer.Length)) > 0)
+                {
+                    zipStream.Write(buffer, 0, sRead);
+                }
+                input.Close();
+            }
+            zipStream.Close();
+            zippedFiles.Close();
+
             return false;
         }
 
