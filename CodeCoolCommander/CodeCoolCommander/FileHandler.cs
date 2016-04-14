@@ -1,14 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.IO.Compression;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace CodeCoolCommander.Controller
 {
     public class FileHandler
     {
+
+         private static long size = 0;
 
         private static bool DeleteFile(string filePath)
         {
@@ -41,24 +45,67 @@ namespace CodeCoolCommander.Controller
 
         public static FileInfo[] GetAllFiles(string dirPath)
         {
-            DirectoryInfo dirInfo = new DirectoryInfo(dirPath);
-            FileInfo fileInfo = new FileInfo(dirPath);
-            FileInfo[] files = dirInfo.GetFiles();
+            DirectoryInfo dirInfo;
+            FileInfo fileInfo;
+            FileInfo[] files;
+            try
+            {
+                 dirInfo = new DirectoryInfo(dirPath);
+                fileInfo = new FileInfo(dirPath);
+                files = dirInfo.GetFiles();
+            }
+            catch(Exception)
 
+            { files = null; }
+            
             return files;
         }
 
         public static DirectoryInfo[] GetAllDirectories(string dirPath)
         {
-            DirectoryInfo dirinfo = new DirectoryInfo(dirPath);
-            DirectoryInfo[] dirs = dirinfo.GetDirectories();
+            DirectoryInfo dirinfo;
+            DirectoryInfo[] dirs;
+            try {
+                dirinfo = new DirectoryInfo(dirPath);
+                dirs = dirinfo.GetDirectories();
+            }
+            catch(Exception)
+            { dirs = null; }
 
             return dirs;
         }
 
         public static bool CompressFiles(List<string> filePath)
         {
-            return false;
+            try
+            {
+                Stream zippedFiles = File.Create(@"c:\Test\test.zip");
+                Stream zipStream = new GZipStream(zippedFiles, CompressionMode.Compress);
+
+                for (int fil = 0; fil < filePath.Count; fil++)
+                {
+                    Stream input = File.OpenRead(filePath[fil]);
+                    byte[] buffer = new byte[4096];
+                    int sRead;
+
+                    while ((sRead = input.Read(buffer, 0, buffer.Length)) > 0)
+                    {
+                        zipStream.Write(buffer, 0, sRead);
+                    }
+                    input.Close();
+                }
+                zipStream.Close();
+                zippedFiles.Close();
+
+                return true;
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Failed to compress the file(s)!");
+
+                return false;
+            }
         }
 
         public static bool DeCompressFiles(List<string> filePath)
@@ -116,10 +163,22 @@ namespace CodeCoolCommander.Controller
             return successfull;
         }
 
-        public static string GetOccupiedSpace(string filePath)
+        private static long GetDirectorySize(string filePath)
         {
-            return "";
+
+            foreach (string dir in Directory.GetDirectories(filePath))
+            {
+                GetDirectorySize(dir);
+            }
+
+            foreach (FileInfo file in new DirectoryInfo(filePath).GetFiles())
+            {
+                size += file.Length;
+            }
+
+            return size / 1024;
         }
     }
-    }
+}
+    
 
