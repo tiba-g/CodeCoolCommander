@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -57,9 +56,7 @@ namespace CodeCoolCommander.Controller
             }
             catch (Exception)
 
-            {
-                files = null;
-            }
+            { files = null; }
 
             return files;
         }
@@ -74,23 +71,21 @@ namespace CodeCoolCommander.Controller
                 dirs = dirinfo.GetDirectories();
             }
             catch (Exception)
-            {
-                dirs = null;
-            }
+            { dirs = null; }
 
             return dirs;
         }
 
-        public static bool CompressFiles(List<string> filePathes)
+        public static bool CompressFiles(List<string> filePath)
         {
             try
             {
-                Stream filesToZip = File.Create(@"c:\Test\test.zip");
-                Stream zipStream = new GZipStream(filesToZip, CompressionMode.Compress);
+                Stream zippedFiles = File.Create(@"c:\Test\test.zip");
+                Stream zipStream = new GZipStream(zippedFiles, CompressionMode.Compress);
 
-                for (int fil = 0; fil < filePathes.Count; fil++)
+                for (int fil = 0; fil < filePath.Count; fil++)
                 {
-                    Stream input = File.OpenRead(filePathes[fil]);
+                    Stream input = File.OpenRead(filePath[fil]);
                     byte[] buffer = new byte[4096];
                     int sRead;
 
@@ -101,12 +96,15 @@ namespace CodeCoolCommander.Controller
                     input.Close();
                 }
                 zipStream.Close();
-                filesToZip.Close();
+                zippedFiles.Close();
 
                 return true;
             }
             catch (Exception)
             {
+
+                MessageBox.Show("Failed to compress the file(s)!");
+
                 return false;
             }
         }
@@ -139,9 +137,9 @@ namespace CodeCoolCommander.Controller
                 return false;
             }
         }
-    
 
-    public static bool EncryptFile(string filePath)
+
+        public static bool EncryptFile(string filePath)
         {
             return false;
         }
@@ -191,20 +189,26 @@ namespace CodeCoolCommander.Controller
             return successfull;
         }
 
-        private static long GetDirectorySize(string filePath)
+        public static long GetDirectorySize(string filePath)
         {
-
-            foreach (string dir in Directory.GetDirectories(filePath))
+            try
             {
-                GetDirectorySize(dir);
-            }
+                foreach (string dir in Directory.GetDirectories(filePath))
+                {
+                    GetDirectorySize(dir);
+                }
 
-            foreach (FileInfo file in new DirectoryInfo(filePath).GetFiles())
+                foreach (FileInfo file in new DirectoryInfo(filePath).GetFiles())
+                {
+                    size += file.Length;
+                }
+
+                return size / 1024;
+            }
+            catch (Exception ex)
             {
-                size += file.Length;
+                return 0;
             }
-
-            return size / 1024;
         }
     }
 }
