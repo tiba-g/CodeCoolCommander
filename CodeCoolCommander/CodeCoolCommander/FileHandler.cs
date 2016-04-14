@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CodeCoolCommander.Controller
 {
-    public class FileHandle
+    public class FileHandler
     {
 
         private static bool DeleteFile(string filePath)
@@ -111,9 +111,28 @@ namespace CodeCoolCommander.Controller
             return successfull;
         }
 
-        public static double GetOccupiedSpace(string filePath)
+        public static string GetOccupiedSpace(string filePath)
         {
-            return 0;
+
+            long count = 0;
+            byte toWrite = 1;
+            try
+            {
+                using (StreamWriter writer = new StreamWriter(filePath))
+                {
+                    while (true)
+                    {
+                        writer.Write(toWrite);
+                        count++;
+                    }
+                }
+            }
+            catch (IOException)
+            {
+            }
+
+            return string.Format("There used to be {0} bytes available on drive {1}.", count, filePath);
         }
+    }
     }
 }
