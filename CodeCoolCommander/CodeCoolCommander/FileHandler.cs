@@ -10,6 +10,8 @@ namespace CodeCoolCommander.Controller
     public class FileHandler
     {
 
+         private static double size = 0;
+
         private static bool DeleteFile(string filePath)
         {
             bool successfull;
@@ -54,7 +56,6 @@ namespace CodeCoolCommander.Controller
 
             { files = null; }
             
-
             return files;
         }
 
@@ -132,10 +133,22 @@ namespace CodeCoolCommander.Controller
             return successfull;
         }
 
-        public static string GetOccupiedSpace(string filePath)
+        private static double GetDirectorySize(string filePath)
         {
-            return "";
+
+            foreach (string dir in Directory.GetDirectories(filePath))
+            {
+                GetDirectorySize(dir);
+            }
+
+            foreach (FileInfo file in new DirectoryInfo(filePath).GetFiles())
+            {
+                size += file.Length;
+            }
+
+            return size;
         }
     }
-    }
+}
+    
 
