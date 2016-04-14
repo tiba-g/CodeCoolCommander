@@ -65,17 +65,26 @@ namespace CodeCoolCommander.View
                     item = new ListViewItem(dir.Name);
                     subItems = new ListViewItem.ListViewSubItem[] { new ListViewItem.ListViewSubItem(item, dir.Extension),
                                                                     new ListViewItem.ListViewSubItem(item, "<DIR>"),
-                                                                    new ListViewItem.ListViewSubItem(item, dir.LastAccessTime.ToShortDateString())
+                                                                    new ListViewItem.ListViewSubItem(item, dir.LastAccessTime.ToShortDateString() + " " + dir.LastAccessTime.ToShortTimeString())
                     };
                     item.SubItems.AddRange(subItems);
                     listView.Items.Add(item);
                 }
             }
+
+            //long fileSize = FileHandler.GetDirectorySize(filePath);
+            string fileSize = "1";
             if (dirs != null)
             {
                 foreach (var file in files)
                 {
-                    listView.Items.Add(file.ToString());
+                    item = new ListViewItem(file.Name);
+                    subItems = new ListViewItem.ListViewSubItem[] { new ListViewItem.ListViewSubItem(item, file.Extension),
+                                                                    new ListViewItem.ListViewSubItem(item, fileSize.ToString()),
+                                                                    new ListViewItem.ListViewSubItem(item, file.LastAccessTime.ToShortDateString() + " " + file.LastAccessTime.ToShortTimeString())
+                    };
+                    item.SubItems.AddRange(subItems);
+                    listView.Items.Add(item);
                 }
             }
         }

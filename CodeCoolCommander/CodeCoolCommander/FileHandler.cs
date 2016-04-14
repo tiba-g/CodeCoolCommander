@@ -12,7 +12,7 @@ namespace CodeCoolCommander.Controller
     public class FileHandler
     {
 
-         private static long size = 0;
+        private static long size = 0;
 
         private static bool DeleteFile(string filePath)
         {
@@ -50,14 +50,14 @@ namespace CodeCoolCommander.Controller
             FileInfo[] files;
             try
             {
-                 dirInfo = new DirectoryInfo(dirPath);
+                dirInfo = new DirectoryInfo(dirPath);
                 fileInfo = new FileInfo(dirPath);
                 files = dirInfo.GetFiles();
             }
-            catch(Exception)
+            catch (Exception)
 
             { files = null; }
-            
+
             return files;
         }
 
@@ -65,11 +65,12 @@ namespace CodeCoolCommander.Controller
         {
             DirectoryInfo dirinfo;
             DirectoryInfo[] dirs;
-            try {
+            try
+            {
                 dirinfo = new DirectoryInfo(dirPath);
                 dirs = dirinfo.GetDirectories();
             }
-            catch(Exception)
+            catch (Exception)
             { dirs = null; }
 
             return dirs;
@@ -163,20 +164,26 @@ namespace CodeCoolCommander.Controller
             return successfull;
         }
 
-        private static long GetDirectorySize(string filePath)
+        public static long GetDirectorySize(string filePath)
         {
-
-            foreach (string dir in Directory.GetDirectories(filePath))
+            try
             {
-                GetDirectorySize(dir);
-            }
+                foreach (string dir in Directory.GetDirectories(filePath))
+                {
+                    GetDirectorySize(dir);
+                }
 
-            foreach (FileInfo file in new DirectoryInfo(filePath).GetFiles())
+                foreach (FileInfo file in new DirectoryInfo(filePath).GetFiles())
+                {
+                    size += file.Length;
+                }
+
+                return size / 1024;
+            }
+            catch (Exception ex)
             {
-                size += file.Length;
+                return 0;
             }
-
-            return size / 1024;
         }
     }
 }
