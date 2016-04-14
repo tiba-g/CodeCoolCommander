@@ -41,17 +41,33 @@ namespace CodeCoolCommander.Controller
 
         public static FileInfo[] GetAllFiles(string dirPath)
         {
-            DirectoryInfo dirInfo = new DirectoryInfo(dirPath);
-            FileInfo fileInfo = new FileInfo(dirPath);
-            FileInfo[] files = dirInfo.GetFiles();
+            DirectoryInfo dirInfo;
+            FileInfo fileInfo;
+            FileInfo[] files;
+            try
+            {
+                 dirInfo = new DirectoryInfo(dirPath);
+                fileInfo = new FileInfo(dirPath);
+                files = dirInfo.GetFiles();
+            }
+            catch(Exception)
+
+            { files = null; }
+            
 
             return files;
         }
 
         public static DirectoryInfo[] GetAllDirectories(string dirPath)
         {
-            DirectoryInfo dirinfo = new DirectoryInfo(dirPath);
-            DirectoryInfo[] dirs = dirinfo.GetDirectories();
+            DirectoryInfo dirinfo;
+            DirectoryInfo[] dirs;
+            try {
+                dirinfo = new DirectoryInfo(dirPath);
+                dirs = dirinfo.GetDirectories();
+            }
+            catch(Exception)
+            { dirs = null; }
 
             return dirs;
         }
