@@ -213,21 +213,16 @@ namespace CodeCoolCommander.Controller
 
         public static long GetFileSize(string filePath)
         {
-
             try {
                 long length = new System.IO.FileInfo(filePath).Length;
 
-                return length;
+                return length / 1024;
             }
             catch ( Exception ex)
             {
                 return -1;
             }
         }
-
-
-
-
     }
 }
     
