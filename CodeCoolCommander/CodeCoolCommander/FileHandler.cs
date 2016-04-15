@@ -207,9 +207,27 @@ namespace CodeCoolCommander.Controller
             }
             catch (Exception ex)
             {
-                return 0;
+                return -1;
             }
         }
+
+        public static long GetFileSize(string filePath)
+        {
+
+            try {
+                long length = new System.IO.FileInfo(filePath).Length;
+
+                return length;
+            }
+            catch ( Exception ex)
+            {
+                return -1;
+            }
+        }
+
+
+
+
     }
 }
     
