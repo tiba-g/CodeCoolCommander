@@ -17,6 +17,10 @@ namespace CodeCoolCommander.View
         private const string accesDeniedDrives = "You have no permisson to acces the drives!";
         private const string accesDenied = "You have no permisson to this action!";
         const string caption = "Error";
+        private ListView selectedListView;
+        DriveInfo[] drives;
+        DirectoryInfo[] dirs;
+        FileInfo[] files;
 
         public CCCForm()
         {
@@ -25,14 +29,15 @@ namespace CodeCoolCommander.View
 
         private void CCCForm_Load(object sender, EventArgs e)
         {
+            drives = FileHandler.GetAllDrives();
             fillComboboxs();
             fillListView(comboBoxDrivesLeft.Text, listViewFilesLeft);
             fillListView(comboBoxDrivesRight.Text, listViewFilesRight);
+            listViewFilesLeft.Items[0].Selected = true;
         }
 
         private void fillComboboxs()
         {
-            DriveInfo[] drives = FileHandler.GetAllDrives();
             if (drives != null)
             {
                 foreach (var drive in drives)
@@ -53,8 +58,8 @@ namespace CodeCoolCommander.View
 
         private void fillListView(string filePath, ListView listView)
         {
-            DirectoryInfo[] dirs = FileHandler.GetAllDirectories(filePath);
-            FileInfo[] files = FileHandler.GetAllFiles(filePath);
+            dirs = FileHandler.GetAllDirectories(filePath);
+            files = FileHandler.GetAllFiles(filePath);
             ListViewItem.ListViewSubItem[] subItems;
             ListViewItem item = null;
             if (dirs != null)
@@ -73,7 +78,7 @@ namespace CodeCoolCommander.View
             }
 
             //long fileSize = FileHandler.GetDirectorySize(filePath);
-            string fileSize = "1";
+            string fileSize = "";
             if (dirs != null)
             {
                 foreach (var file in files)
@@ -87,6 +92,35 @@ namespace CodeCoolCommander.View
                     listView.Items.Add(item);
                 }
             }
+        }
+
+        private void listViewFilesLeft_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            selectedListView = listViewFilesLeft;
+        }
+
+        private void listViewFilesRight_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            selectedListView = listViewFilesRight;
+        }
+
+        private void comboBoxDrivesLeft_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            fillListView(comboBoxDrivesLeft.Text, listViewFilesLeft);
+        }
+
+        private void comboBoxDrivesRight_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            fillListView(comboBoxDrivesRight.Text, listViewFilesRight);
+        }
+
+        private void buttonCopy_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listViewFilesRight_DoubleClick(object sender, EventArgs e)
+        {
         }
     }
 }

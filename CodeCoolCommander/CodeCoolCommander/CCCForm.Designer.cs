@@ -63,6 +63,7 @@ namespace CodeCoolCommander.View
             this.comboBoxDrivesLeft.Name = "comboBoxDrivesLeft";
             this.comboBoxDrivesLeft.Size = new System.Drawing.Size(460, 21);
             this.comboBoxDrivesLeft.TabIndex = 2;
+            this.comboBoxDrivesLeft.SelectedIndexChanged += new System.EventHandler(this.comboBoxDrivesLeft_SelectedIndexChanged);
             // 
             // comboBoxDrivesRight
             // 
@@ -71,6 +72,7 @@ namespace CodeCoolCommander.View
             this.comboBoxDrivesRight.Name = "comboBoxDrivesRight";
             this.comboBoxDrivesRight.Size = new System.Drawing.Size(457, 21);
             this.comboBoxDrivesRight.TabIndex = 3;
+            this.comboBoxDrivesRight.SelectedIndexChanged += new System.EventHandler(this.comboBoxDrivesRight_SelectedIndexChanged);
             // 
             // textBoxSearch
             // 
@@ -105,6 +107,7 @@ namespace CodeCoolCommander.View
             this.buttonCopy.TabIndex = 7;
             this.buttonCopy.Text = "Copy F2";
             this.buttonCopy.UseVisualStyleBackColor = true;
+            this.buttonCopy.Click += new System.EventHandler(this.buttonCopy_Click);
             // 
             // buttonMove
             // 
@@ -176,12 +179,14 @@ namespace CodeCoolCommander.View
             this.columnHeaderExtL,
             this.columnHeaderSizeL,
             this.columnHeaderDateL});
+            this.listViewFilesLeft.FullRowSelect = true;
             this.listViewFilesLeft.Location = new System.Drawing.Point(8, 44);
             this.listViewFilesLeft.Name = "listViewFilesLeft";
             this.listViewFilesLeft.Size = new System.Drawing.Size(460, 365);
             this.listViewFilesLeft.TabIndex = 0;
             this.listViewFilesLeft.UseCompatibleStateImageBehavior = false;
             this.listViewFilesLeft.View = System.Windows.Forms.View.Details;
+            this.listViewFilesLeft.SelectedIndexChanged += new System.EventHandler(this.listViewFilesLeft_SelectedIndexChanged);
             // 
             // columnHeaderNameL
             // 
@@ -210,12 +215,15 @@ namespace CodeCoolCommander.View
             this.columnHeader2,
             this.columnHeader3,
             this.columnHeader4});
+            this.listViewFilesRight.FullRowSelect = true;
             this.listViewFilesRight.Location = new System.Drawing.Point(474, 44);
             this.listViewFilesRight.Name = "listViewFilesRight";
             this.listViewFilesRight.Size = new System.Drawing.Size(457, 365);
             this.listViewFilesRight.TabIndex = 15;
             this.listViewFilesRight.UseCompatibleStateImageBehavior = false;
             this.listViewFilesRight.View = System.Windows.Forms.View.Details;
+            this.listViewFilesRight.SelectedIndexChanged += new System.EventHandler(this.listViewFilesRight_SelectedIndexChanged);
+            this.listViewFilesRight.DoubleClick += new System.EventHandler(this.listViewFilesRight_DoubleClick);
             // 
             // columnHeader1
             // 
