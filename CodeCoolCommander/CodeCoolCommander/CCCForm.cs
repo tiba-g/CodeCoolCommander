@@ -19,12 +19,20 @@ namespace CodeCoolCommander.View
         const string caption = "Error";
         private ListView selectedListView;
         DriveInfo[] drives;
-        DirectoryInfo[] dirs;
-        FileInfo[] files;
+        public static DirectoryInfo[] dirs;
+        public static FileInfo[] files;
+        private bool start = true;
+        bool firstMsgBox = true;
+        private int listViewSelectedItemLeft;
+        private int listViewSelectedItemRight;
+        private string pathLeft;
 
         public CCCForm()
         {
             InitializeComponent();
+            listViewFilesLeft.MultiSelect = false;
+            listViewFilesRight.MultiSelect = false;
+            
         }
 
         private void CCCForm_Load(object sender, EventArgs e)
@@ -58,6 +66,7 @@ namespace CodeCoolCommander.View
 
         private void fillListView(string filePath, ListView listView)
         {
+            listView.Items.Clear();
             dirs = FileHandler.GetAllDirectories(filePath);
             files = FileHandler.GetAllFiles(filePath);
             ListViewItem.ListViewSubItem[] subItems;
@@ -96,7 +105,27 @@ namespace CodeCoolCommander.View
 
         private void listViewFilesLeft_SelectedIndexChanged(object sender, EventArgs e)
         {
-            selectedListView = listViewFilesLeft;
+            if (!start)
+            {
+                selectedListView = listViewFilesLeft;
+                try
+                {
+                    listViewSelectedItemLeft = listViewFilesLeft.SelectedIndices[0];
+
+                }
+                catch (Exception)
+                {
+                }
+
+                
+                pathLeft = FileHandler.getSelectedItemPath(listViewSelectedItemLeft);
+                // for debug MessageBox.Show(listViewSelectedItemLeft.ToString());
+                filePathLeft.Text = pathLeft;
+                firstMsgBox = !firstMsgBox;
+                
+            }
+            start = false;
+
         }
 
         private void listViewFilesRight_SelectedIndexChanged(object sender, EventArgs e)
@@ -121,6 +150,34 @@ namespace CodeCoolCommander.View
 
         private void listViewFilesRight_DoubleClick(object sender, EventArgs e)
         {
+        }
+
+        private void listViewFilesLeft_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (listViewSelectedItemLeft + 1 > dirs.Length)
+            {
+                MessageBox.Show("Please select a directory!");
+            }
+            else
+            {
+                files = FileHandler.GetAllFiles(pathLeft);
+                dirs = FileHandler.GetAllDirectories(pathLeft);
+                listViewFilesLeft.Items.Clear();
+                if (dirs != null)
+                {
+                    foreach (DirectoryInfo dir in dirs)
+                    {
+                        listViewFilesLeft.Items.Add(dir.ToString());
+                    }
+                }
+                if (files != null)
+                {
+                    foreach (FileInfo file in files)
+                    {
+                        listViewFilesLeft.Items.Add(file.ToString());
+                    }
+                }
+            }
         }
     }
 }

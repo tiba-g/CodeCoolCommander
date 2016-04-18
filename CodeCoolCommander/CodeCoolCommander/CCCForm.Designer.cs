@@ -54,14 +54,16 @@ namespace CodeCoolCommander.View
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.button1 = new System.Windows.Forms.Button();
+            this.filePathLeft = new System.Windows.Forms.TextBox();
+            this.filePathRight = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // comboBoxDrivesLeft
             // 
             this.comboBoxDrivesLeft.FormattingEnabled = true;
-            this.comboBoxDrivesLeft.Location = new System.Drawing.Point(8, 17);
+            this.comboBoxDrivesLeft.Location = new System.Drawing.Point(8, 16);
             this.comboBoxDrivesLeft.Name = "comboBoxDrivesLeft";
-            this.comboBoxDrivesLeft.Size = new System.Drawing.Size(460, 21);
+            this.comboBoxDrivesLeft.Size = new System.Drawing.Size(52, 21);
             this.comboBoxDrivesLeft.TabIndex = 2;
             this.comboBoxDrivesLeft.SelectedIndexChanged += new System.EventHandler(this.comboBoxDrivesLeft_SelectedIndexChanged);
             // 
@@ -70,7 +72,7 @@ namespace CodeCoolCommander.View
             this.comboBoxDrivesRight.FormattingEnabled = true;
             this.comboBoxDrivesRight.Location = new System.Drawing.Point(474, 17);
             this.comboBoxDrivesRight.Name = "comboBoxDrivesRight";
-            this.comboBoxDrivesRight.Size = new System.Drawing.Size(457, 21);
+            this.comboBoxDrivesRight.Size = new System.Drawing.Size(56, 21);
             this.comboBoxDrivesRight.TabIndex = 3;
             this.comboBoxDrivesRight.SelectedIndexChanged += new System.EventHandler(this.comboBoxDrivesRight_SelectedIndexChanged);
             // 
@@ -187,6 +189,7 @@ namespace CodeCoolCommander.View
             this.listViewFilesLeft.UseCompatibleStateImageBehavior = false;
             this.listViewFilesLeft.View = System.Windows.Forms.View.Details;
             this.listViewFilesLeft.SelectedIndexChanged += new System.EventHandler(this.listViewFilesLeft_SelectedIndexChanged);
+            this.listViewFilesLeft.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listViewFilesLeft_MouseDoubleClick);
             // 
             // columnHeaderNameL
             // 
@@ -254,12 +257,28 @@ namespace CodeCoolCommander.View
             this.button1.Text = "Occupied Space F9";
             this.button1.UseVisualStyleBackColor = true;
             // 
+            // filePathLeft
+            // 
+            this.filePathLeft.Location = new System.Drawing.Point(66, 17);
+            this.filePathLeft.Name = "filePathLeft";
+            this.filePathLeft.Size = new System.Drawing.Size(402, 20);
+            this.filePathLeft.TabIndex = 17;
+            // 
+            // filePathRight
+            // 
+            this.filePathRight.Location = new System.Drawing.Point(537, 17);
+            this.filePathRight.Name = "filePathRight";
+            this.filePathRight.Size = new System.Drawing.Size(394, 20);
+            this.filePathRight.TabIndex = 18;
+            // 
             // CCCForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(943, 472);
+            this.Controls.Add(this.filePathRight);
+            this.Controls.Add(this.filePathLeft);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.listViewFilesRight);
             this.Controls.Add(this.buttonOccupiedSpace);
@@ -311,6 +330,8 @@ namespace CodeCoolCommander.View
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox filePathLeft;
+        private System.Windows.Forms.TextBox filePathRight;
     }
 }
 

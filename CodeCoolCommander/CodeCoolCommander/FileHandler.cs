@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CodeCoolCommander.View;
 
 namespace CodeCoolCommander.Controller
 {
@@ -53,6 +54,9 @@ namespace CodeCoolCommander.Controller
                 dirInfo = new DirectoryInfo(dirPath);
                 fileInfo = new FileInfo(dirPath);
                 files = dirInfo.GetFiles();
+                Array.Sort(files, delegate (FileInfo f1, FileInfo f2) {
+                    return f1.Name.CompareTo(f2.Name);
+                });
             }
             catch (Exception)
 
@@ -69,9 +73,16 @@ namespace CodeCoolCommander.Controller
             {
                 dirinfo = new DirectoryInfo(dirPath);
                 dirs = dirinfo.GetDirectories();
+
+                Array.Sort(dirs, delegate(DirectoryInfo f1, DirectoryInfo f2) {
+                    return f1.Name.CompareTo(f2.Name);
+                });
             }
             catch (Exception)
-            { dirs = null; }
+            {
+                dirs = null;
+                MessageBox.Show("Can't open drive or folder!");
+            }
 
             return dirs;
         }
@@ -221,6 +232,18 @@ namespace CodeCoolCommander.Controller
             catch ( Exception ex)
             {
                 return -1;
+            }
+        }
+
+        public static string getSelectedItemPath(int index)
+        {
+            if ((index + 1) > CCCForm.dirs.Length)
+            {
+                return CCCForm.files[index - CCCForm.dirs.Length].FullName;
+            }
+            else
+            {
+                return CCCForm.dirs[index].FullName;
             }
         }
     }
