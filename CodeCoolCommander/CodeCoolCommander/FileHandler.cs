@@ -235,16 +235,36 @@ namespace CodeCoolCommander.Controller
             }
         }
 
-        public static string getSelectedItemPath(int index)
+        public static string GetSelectedItemPath(int index, bool right)
         {
-            if ((index + 1) > CCCForm.dirs.Length)
+            if (right)
             {
-                return CCCForm.files[index - CCCForm.dirs.Length].FullName;
+                if ((index + 1) > CCCForm.dirsRight.Length)
+                {
+                    return CCCForm.filesRight[index - CCCForm.dirsRight.Length].FullName;
+                }
+                else
+                {
+                    return CCCForm.dirsRight[index].FullName;
+                }
             }
             else
             {
-                return CCCForm.dirs[index].FullName;
+                if ((index + 1) > CCCForm.dirsLeft.Length)
+                {
+                    return CCCForm.filesLeft[index - CCCForm.dirsLeft.Length].FullName;
+                }
+                else
+                {
+                    return CCCForm.dirsLeft[index].FullName;
+                }
             }
+            
+        }
+
+        public void OpenTxtFile(string filePath)
+        {
+
         }
     }
 }

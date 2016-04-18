@@ -42,7 +42,7 @@ namespace CodeCoolCommander.View
             this.buttonEncrypt = new System.Windows.Forms.Button();
             this.buttonDencrypt = new System.Windows.Forms.Button();
             this.buttonAttribute = new System.Windows.Forms.Button();
-            this.buttonOccupiedSpace = new System.Windows.Forms.Button();
+            this.buttonOpenText = new System.Windows.Forms.Button();
             this.listViewFilesLeft = new System.Windows.Forms.ListView();
             this.columnHeaderNameL = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderExtL = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -165,14 +165,15 @@ namespace CodeCoolCommander.View
             this.buttonAttribute.Text = "File Attributes F7";
             this.buttonAttribute.UseVisualStyleBackColor = true;
             // 
-            // buttonOccupiedSpace
+            // buttonOpenText
             // 
-            this.buttonOccupiedSpace.Location = new System.Drawing.Point(715, 444);
-            this.buttonOccupiedSpace.Name = "buttonOccupiedSpace";
-            this.buttonOccupiedSpace.Size = new System.Drawing.Size(95, 23);
-            this.buttonOccupiedSpace.TabIndex = 14;
-            this.buttonOccupiedSpace.Text = "Open Text F8";
-            this.buttonOccupiedSpace.UseVisualStyleBackColor = true;
+            this.buttonOpenText.Location = new System.Drawing.Point(715, 444);
+            this.buttonOpenText.Name = "buttonOpenText";
+            this.buttonOpenText.Size = new System.Drawing.Size(95, 23);
+            this.buttonOpenText.TabIndex = 14;
+            this.buttonOpenText.Text = "Open Text F8";
+            this.buttonOpenText.UseVisualStyleBackColor = true;
+            this.buttonOpenText.Click += new System.EventHandler(this.buttonOpenText_Click);
             // 
             // listViewFilesLeft
             // 
@@ -227,6 +228,7 @@ namespace CodeCoolCommander.View
             this.listViewFilesRight.View = System.Windows.Forms.View.Details;
             this.listViewFilesRight.SelectedIndexChanged += new System.EventHandler(this.listViewFilesRight_SelectedIndexChanged);
             this.listViewFilesRight.DoubleClick += new System.EventHandler(this.listViewFilesRight_DoubleClick);
+            this.listViewFilesRight.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listViewFilesRight_MouseDoubleClick);
             // 
             // columnHeader1
             // 
@@ -281,7 +283,7 @@ namespace CodeCoolCommander.View
             this.Controls.Add(this.filePathLeft);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.listViewFilesRight);
-            this.Controls.Add(this.buttonOccupiedSpace);
+            this.Controls.Add(this.buttonOpenText);
             this.Controls.Add(this.buttonAttribute);
             this.Controls.Add(this.buttonDencrypt);
             this.Controls.Add(this.buttonEncrypt);
@@ -318,7 +320,7 @@ namespace CodeCoolCommander.View
         private System.Windows.Forms.Button buttonEncrypt;
         private System.Windows.Forms.Button buttonDencrypt;
         private System.Windows.Forms.Button buttonAttribute;
-        private System.Windows.Forms.Button buttonOccupiedSpace;
+        private System.Windows.Forms.Button buttonOpenText;
         private System.Windows.Forms.ListView listViewFilesLeft;
         private System.Windows.Forms.ColumnHeader columnHeaderNameL;
         private System.Windows.Forms.ColumnHeader columnHeaderExtL;

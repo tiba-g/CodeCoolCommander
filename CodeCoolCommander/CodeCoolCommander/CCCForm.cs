@@ -19,13 +19,17 @@ namespace CodeCoolCommander.View
         const string caption = "Error";
         private ListView selectedListView;
         DriveInfo[] drives;
-        public static DirectoryInfo[] dirs;
-        public static FileInfo[] files;
+        public static DirectoryInfo[] dirsLeft;
+        public static FileInfo[] filesLeft;
+        public static DirectoryInfo[] dirsRight;
+        public static FileInfo[] filesRight;
         private bool start = true;
         bool firstMsgBox = true;
         private int listViewSelectedItemLeft;
         private int listViewSelectedItemRight;
         private string pathLeft;
+        private string pathRight;
+        private static bool leftSelected;
 
         public CCCForm()
         {
@@ -42,6 +46,7 @@ namespace CodeCoolCommander.View
             fillListView(comboBoxDrivesLeft.Text, listViewFilesLeft);
             fillListView(comboBoxDrivesRight.Text, listViewFilesRight);
             listViewFilesLeft.Items[0].Selected = true;
+            
         }
 
         private void fillComboboxs()
@@ -67,15 +72,16 @@ namespace CodeCoolCommander.View
         private void fillListView(string filePath, ListView listView)
         {
             listView.Items.Clear();
-            dirs = FileHandler.GetAllDirectories(filePath);
-            files = FileHandler.GetAllFiles(filePath);
+            dirsLeft = FileHandler.GetAllDirectories(filePath);
+            filesLeft = FileHandler.GetAllFiles(filePath);
+            dirsRight = dirsLeft;
+            filesRight = filesLeft;
             ListViewItem.ListViewSubItem[] subItems;
             ListViewItem item = null;
-            if (dirs != null)
+            if (dirsLeft != null)
             {
-                foreach (var dir in dirs)
+                foreach (var dir in dirsLeft)
                 {
-
                     item = new ListViewItem(dir.Name);
                     subItems = new ListViewItem.ListViewSubItem[] { new ListViewItem.ListViewSubItem(item, dir.Extension),
                                                                     new ListViewItem.ListViewSubItem(item, "<DIR>"),
@@ -88,9 +94,9 @@ namespace CodeCoolCommander.View
 
             //long fileSize = FileHandler.GetDirectorySize(filePath);
             string fileSize = "";
-            if (dirs != null)
+            if (dirsLeft != null)
             {
-                foreach (var file in files)
+                foreach (var file in filesLeft)
                 {
                     item = new ListViewItem(file.Name);
                     subItems = new ListViewItem.ListViewSubItem[] { new ListViewItem.ListViewSubItem(item, file.Extension),
@@ -105,24 +111,20 @@ namespace CodeCoolCommander.View
 
         private void listViewFilesLeft_SelectedIndexChanged(object sender, EventArgs e)
         {
+            leftSelected = true;
             if (!start)
             {
                 selectedListView = listViewFilesLeft;
                 try
                 {
                     listViewSelectedItemLeft = listViewFilesLeft.SelectedIndices[0];
-
                 }
                 catch (Exception)
                 {
                 }
-
-                
-                pathLeft = FileHandler.getSelectedItemPath(listViewSelectedItemLeft);
+                pathLeft = FileHandler.GetSelectedItemPath(listViewSelectedItemLeft, false);
                 // for debug MessageBox.Show(listViewSelectedItemLeft.ToString());
                 filePathLeft.Text = pathLeft;
-                firstMsgBox = !firstMsgBox;
-                
             }
             start = false;
 
@@ -130,7 +132,22 @@ namespace CodeCoolCommander.View
 
         private void listViewFilesRight_SelectedIndexChanged(object sender, EventArgs e)
         {
-            selectedListView = listViewFilesRight;
+            leftSelected = false;
+            if (!start)
+            {
+                selectedListView = listViewFilesRight;
+                try
+                {
+                    listViewSelectedItemRight = listViewFilesRight.SelectedIndices[0];
+                }
+                catch (Exception)
+                {
+                }
+                pathRight = FileHandler.GetSelectedItemPath(listViewSelectedItemRight, true);
+                // for debug MessageBox.Show(listViewSelectedItemLeft.ToString());
+                filePathRight.Text = pathRight;
+            }
+            start = false;
         }
 
         private void comboBoxDrivesLeft_SelectedIndexChanged(object sender, EventArgs e)
@@ -154,30 +171,71 @@ namespace CodeCoolCommander.View
 
         private void listViewFilesLeft_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            if (listViewSelectedItemLeft + 1 > dirs.Length)
+            if (listViewSelectedItemLeft + 1 > dirsLeft.Length)
             {
                 MessageBox.Show("Please select a directory!");
             }
             else
             {
-                files = FileHandler.GetAllFiles(pathLeft);
-                dirs = FileHandler.GetAllDirectories(pathLeft);
+                filesLeft = FileHandler.GetAllFiles(pathLeft);
+                dirsLeft = FileHandler.GetAllDirectories(pathLeft);
                 listViewFilesLeft.Items.Clear();
-                if (dirs != null)
+                if (dirsLeft != null)
                 {
-                    foreach (DirectoryInfo dir in dirs)
+                    foreach (DirectoryInfo dir in dirsLeft)
                     {
                         listViewFilesLeft.Items.Add(dir.ToString());
                     }
                 }
-                if (files != null)
+                if (filesLeft != null)
                 {
-                    foreach (FileInfo file in files)
+                    foreach (FileInfo file in filesLeft)
                     {
                         listViewFilesLeft.Items.Add(file.ToString());
                     }
                 }
             }
+        }
+
+        private void listViewFilesRight_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (listViewSelectedItemRight + 1 > dirsRight.Length)
+            {
+                if (Path.GetExtension(filePathRight.Text) == ".txt")
+                {
+                    Form txtForm = new TXTReader(filePathRight.Text);
+                    txtForm.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Please select a directory!");
+                }
+            }
+            else
+            {
+                filesRight = FileHandler.GetAllFiles(pathRight);
+                dirsRight = FileHandler.GetAllDirectories(pathRight);
+                listViewFilesRight.Items.Clear();
+                if (dirsRight != null)
+                {
+                    foreach (DirectoryInfo dir in dirsRight)
+                    {
+                        listViewFilesRight.Items.Add(dir.ToString());
+                    }
+                }
+                if (filesRight != null)
+                {
+                    foreach (FileInfo file in filesRight)
+                    {
+                        listViewFilesRight.Items.Add(file.ToString());
+                    }
+                }
+            }
+        }
+
+        private void buttonOpenText_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
