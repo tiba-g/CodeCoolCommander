@@ -56,6 +56,8 @@ namespace CodeCoolCommander.View
             this.button1 = new System.Windows.Forms.Button();
             this.filePathLeft = new System.Windows.Forms.TextBox();
             this.filePathRight = new System.Windows.Forms.TextBox();
+            this.leftUpButton = new System.Windows.Forms.Button();
+            this.rightUpButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // comboBoxDrivesLeft
@@ -70,7 +72,7 @@ namespace CodeCoolCommander.View
             // comboBoxDrivesRight
             // 
             this.comboBoxDrivesRight.FormattingEnabled = true;
-            this.comboBoxDrivesRight.Location = new System.Drawing.Point(474, 17);
+            this.comboBoxDrivesRight.Location = new System.Drawing.Point(545, 16);
             this.comboBoxDrivesRight.Name = "comboBoxDrivesRight";
             this.comboBoxDrivesRight.Size = new System.Drawing.Size(56, 21);
             this.comboBoxDrivesRight.TabIndex = 3;
@@ -185,7 +187,7 @@ namespace CodeCoolCommander.View
             this.listViewFilesLeft.FullRowSelect = true;
             this.listViewFilesLeft.Location = new System.Drawing.Point(8, 44);
             this.listViewFilesLeft.Name = "listViewFilesLeft";
-            this.listViewFilesLeft.Size = new System.Drawing.Size(460, 365);
+            this.listViewFilesLeft.Size = new System.Drawing.Size(531, 365);
             this.listViewFilesLeft.TabIndex = 0;
             this.listViewFilesLeft.UseCompatibleStateImageBehavior = false;
             this.listViewFilesLeft.View = System.Windows.Forms.View.Details;
@@ -200,17 +202,17 @@ namespace CodeCoolCommander.View
             // columnHeaderExtL
             // 
             this.columnHeaderExtL.Text = "Ext";
-            this.columnHeaderExtL.Width = 100;
+            this.columnHeaderExtL.Width = 50;
             // 
             // columnHeaderSizeL
             // 
             this.columnHeaderSizeL.Text = "Size";
-            this.columnHeaderSizeL.Width = 100;
+            this.columnHeaderSizeL.Width = 110;
             // 
             // columnHeaderDateL
             // 
             this.columnHeaderDateL.Text = "Date";
-            this.columnHeaderDateL.Width = 100;
+            this.columnHeaderDateL.Width = 130;
             // 
             // listViewFilesRight
             // 
@@ -220,9 +222,9 @@ namespace CodeCoolCommander.View
             this.columnHeader3,
             this.columnHeader4});
             this.listViewFilesRight.FullRowSelect = true;
-            this.listViewFilesRight.Location = new System.Drawing.Point(474, 44);
+            this.listViewFilesRight.Location = new System.Drawing.Point(545, 44);
             this.listViewFilesRight.Name = "listViewFilesRight";
-            this.listViewFilesRight.Size = new System.Drawing.Size(457, 365);
+            this.listViewFilesRight.Size = new System.Drawing.Size(528, 365);
             this.listViewFilesRight.TabIndex = 15;
             this.listViewFilesRight.UseCompatibleStateImageBehavior = false;
             this.listViewFilesRight.View = System.Windows.Forms.View.Details;
@@ -238,17 +240,17 @@ namespace CodeCoolCommander.View
             // columnHeader2
             // 
             this.columnHeader2.Text = "Ext";
-            this.columnHeader2.Width = 100;
+            this.columnHeader2.Width = 50;
             // 
             // columnHeader3
             // 
             this.columnHeader3.Text = "Size";
-            this.columnHeader3.Width = 100;
+            this.columnHeader3.Width = 110;
             // 
             // columnHeader4
             // 
             this.columnHeader4.Text = "Date";
-            this.columnHeader4.Width = 100;
+            this.columnHeader4.Width = 130;
             // 
             // button1
             // 
@@ -263,22 +265,42 @@ namespace CodeCoolCommander.View
             // 
             this.filePathLeft.Location = new System.Drawing.Point(66, 17);
             this.filePathLeft.Name = "filePathLeft";
-            this.filePathLeft.Size = new System.Drawing.Size(402, 20);
+            this.filePathLeft.Size = new System.Drawing.Size(408, 20);
             this.filePathLeft.TabIndex = 17;
             // 
             // filePathRight
             // 
-            this.filePathRight.Location = new System.Drawing.Point(537, 17);
+            this.filePathRight.Location = new System.Drawing.Point(607, 16);
             this.filePathRight.Name = "filePathRight";
-            this.filePathRight.Size = new System.Drawing.Size(394, 20);
+            this.filePathRight.Size = new System.Drawing.Size(402, 20);
             this.filePathRight.TabIndex = 18;
+            // 
+            // leftUpButton
+            // 
+            this.leftUpButton.Location = new System.Drawing.Point(481, 17);
+            this.leftUpButton.Name = "leftUpButton";
+            this.leftUpButton.Size = new System.Drawing.Size(58, 20);
+            this.leftUpButton.TabIndex = 19;
+            this.leftUpButton.Text = "Up";
+            this.leftUpButton.UseVisualStyleBackColor = true;
+            // 
+            // rightUpButton
+            // 
+            this.rightUpButton.Location = new System.Drawing.Point(1015, 15);
+            this.rightUpButton.Name = "rightUpButton";
+            this.rightUpButton.Size = new System.Drawing.Size(58, 20);
+            this.rightUpButton.TabIndex = 20;
+            this.rightUpButton.Text = "Up";
+            this.rightUpButton.UseVisualStyleBackColor = true;
             // 
             // CCCForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(943, 472);
+            this.ClientSize = new System.Drawing.Size(1085, 472);
+            this.Controls.Add(this.rightUpButton);
+            this.Controls.Add(this.leftUpButton);
             this.Controls.Add(this.filePathRight);
             this.Controls.Add(this.filePathLeft);
             this.Controls.Add(this.button1);
@@ -334,6 +356,8 @@ namespace CodeCoolCommander.View
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox filePathLeft;
         private System.Windows.Forms.TextBox filePathRight;
+        private System.Windows.Forms.Button leftUpButton;
+        private System.Windows.Forms.Button rightUpButton;
     }
 }
 

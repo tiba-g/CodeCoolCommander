@@ -15,7 +15,15 @@ namespace CodeCoolCommander
         public TXTReader(string path)
         {
             InitializeComponent();
-            richTextBox1.LoadFile(path, RichTextBoxStreamType.PlainText);
+            try
+            {
+                richTextBox1.LoadFile(path, RichTextBoxStreamType.PlainText);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Can't access file!");
+            }
+            
         }
     }
 }
