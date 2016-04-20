@@ -121,6 +121,7 @@ namespace CodeCoolCommander.View
             this.buttonMove.TabIndex = 8;
             this.buttonMove.Text = "Move F3";
             this.buttonMove.UseVisualStyleBackColor = true;
+            this.buttonMove.Click += new System.EventHandler(this.buttonMove_Click);
             // 
             // buttonZip
             // 

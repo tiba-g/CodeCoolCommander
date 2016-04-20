@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Windows.Forms.VisualStyles;
 using CodeCoolCommander.Controller;
 
 namespace CodeCoolCommander.View
@@ -201,7 +202,22 @@ namespace CodeCoolCommander.View
 
         private void buttonCopy_Click(object sender, EventArgs e)
         {
-
+            if (leftSelected)
+            {
+                string fileName = Path.GetFileName(filePathLeft.Text);
+                if (FileHandler.CopyFile(filePathLeft.Text, filePathRight.Text + "\\" + fileName, true))
+                {
+                    MessageBox.Show("Copy was successfull");
+                }
+            }
+            else
+            {
+                string fileName = Path.GetFileName(filePathRight.Text);
+                if (FileHandler.CopyFile(filePathRight.Text, filePathLeft.Text + "\\" + fileName, true))
+                {
+                    MessageBox.Show("Copy was successfull");
+                }
+            }
         }
 
         private void listViewFilesRight_DoubleClick(object sender, EventArgs e)
@@ -299,6 +315,26 @@ namespace CodeCoolCommander.View
             else
             {
                 MessageBox.Show("Please select a txt file");
+            }
+        }
+
+        private void buttonMove_Click(object sender, EventArgs e)
+        {
+            if (leftSelected)
+            {
+                string fileName = Path.GetFileName(filePathLeft.Text);
+                if (FileHandler.MoveFile(filePathLeft.Text, filePathRight.Text + "\\" + fileName))
+                {
+                    MessageBox.Show("Move was successfull");
+                }
+            }
+            else
+            {
+                string fileName = Path.GetFileName(filePathRight.Text);
+                if (FileHandler.MoveFile(filePathRight.Text, filePathLeft.Text + "\\" + fileName))
+                {
+                    MessageBox.Show("Move was successfull");
+                }
             }
         }
     }
